@@ -5,6 +5,7 @@
 #import <React/RCTRootView.h>
 
 #import <React/RCTAppSetupUtils.h>
+#import "RNContainerViewController.h"
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -51,9 +52,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   } else {
     rootView.backgroundColor = [UIColor whiteColor];
   }
-
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
+//  RNContainerViewController *rootViewController = [RNContainerViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
