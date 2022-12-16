@@ -8,51 +8,54 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React, { type PropsWithChildren } from 'react';
 import {
+  Alert,
+  GestureResponderEvent,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
 
 import {
   Colors,
-  DebugInstructions,
   Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
     title: string;
+    onPress?: ((event: GestureResponderEvent) => void) | undefined;
   }>
-> = ({children, title}) => {
+> = ({ children, title, onPress }) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.sectionContainer} >
+      <TouchableOpacity onPress={onPress}>
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              color: isDarkMode ? Colors.white : Colors.black,
+            },
+          ]}>
+          {title}
+        </Text>
+        <Text
+          style={[
+            styles.sectionDescription,
+            {
+              color: isDarkMode ? Colors.light : Colors.dark,
+            },
+          ]}>
+          {children}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -78,20 +81,19 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+          <Section title="Text" onPress={() => {
+            Alert.alert('你点击了按钮！');
+          }}>
+            文本组件
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
+          <Section title="Image">
+            图片组件
           </Section>
-          <Section title="Debug">
-            <DebugInstructions />
+
+          <Section title="FastList">
+            List
           </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -100,8 +102,9 @@ const App = () => {
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    marginTop: 20,
+    paddingHorizontal: 20,
+    // backgroundColor: '#f9c2ff',
   },
   sectionTitle: {
     fontSize: 24,

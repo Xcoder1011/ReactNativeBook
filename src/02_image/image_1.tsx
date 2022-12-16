@@ -1,5 +1,5 @@
 import { Image, SafeAreaView, ScrollView, StatusBar, Text, useColorScheme, View } from "react-native";
-import { Colors, Header } from "react-native/Libraries/NewAppScreen";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 import ICON_BASE64 from "./ICON_BASE64";
 
 const Image_1 = () => {
