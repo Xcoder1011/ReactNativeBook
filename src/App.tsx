@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { type PropsWithChildren } from 'react';
+import React, { FC, type PropsWithChildren } from 'react';
 import {
   Alert,
   GestureResponderEvent,
@@ -26,6 +26,9 @@ import {
   Colors,
   Header,
 } from 'react-native/Libraries/NewAppScreen';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import type { RouteProp } from '@react-navigation/native'
+import { RouteName, RootStackParamList } from "./RouterName";
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -60,9 +63,15 @@ const Section: React.FC<
   );
 };
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
 
+type AppProps = {
+  navigation: NativeStackNavigationProp<RootStackParamList, RouteName.Home>
+  route: RouteProp<RootStackParamList, RouteName.Home>
+}
+
+const App: FC<AppProps> = ({ navigation }) => {
+
+  const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -86,7 +95,9 @@ const App = () => {
           }}>
             文本组件
           </Section>
-          <Section title="Image">
+          <Section title="Image" onPress={() => {
+            // navigation.navigate(RouteName.Image, { userId: '123' })
+          }}>
             图片组件
           </Section>
 
@@ -119,5 +130,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
 
 export default App;
