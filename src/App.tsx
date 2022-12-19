@@ -28,7 +28,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import type { RouteProp } from '@react-navigation/native'
-import { RouteName, RootStackParamList } from "./RouterName";
+import { RouterName, RootStackParamList } from "./RouterName";
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -65,8 +65,8 @@ const Section: React.FC<
 
 
 type AppProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, RouteName.Home>
-  route: RouteProp<RootStackParamList, RouteName.Home>
+  navigation: NativeStackNavigationProp<RootStackParamList, RouterName.Home>
+  route: RouteProp<RootStackParamList, RouterName.Home>
 }
 
 const App: FC<AppProps> = ({ navigation }) => {
@@ -95,13 +95,16 @@ const App: FC<AppProps> = ({ navigation }) => {
           }}>
             文本组件
           </Section>
+
           <Section title="Image" onPress={() => {
-            // navigation.navigate(RouteName.Image, { userId: '123' })
+            navigation.navigate(RouterName.Image, { userId: '123' })
           }}>
             图片组件
           </Section>
 
-          <Section title="FastList">
+          <Section title="FastList" onPress={()=>{
+            navigation.navigate(RouterName.Main)
+          }}>
             List
           </Section>
 

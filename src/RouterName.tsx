@@ -1,4 +1,4 @@
-export enum RouteName {
+export enum RouterName {
     Home = 'ReactiveBook',
     Image = 'Image',
     Main = 'Main',
@@ -7,9 +7,9 @@ export enum RouteName {
 }
 
 export type RootStackParamList = {
-    [RouteName.Home]: undefined;
-    [RouteName.Image]: { userId: string };
-    [RouteName.Main]: undefined;
-    [RouteName.Foo]: undefined;
-    [RouteName.Bar]: { userId: string };
+    [RouterName.Home]: undefined;
+    [RouterName.Image]: { userId: string };
+    [RouterName.Main]: undefined;
+    [RouterName.Foo]: undefined;
+    [RouterName.Bar]: { userId: string };
 }

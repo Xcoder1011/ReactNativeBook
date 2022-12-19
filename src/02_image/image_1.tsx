@@ -1,8 +1,20 @@
+import { RouteProp } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { FC } from "react";
 import { Image, SafeAreaView, ScrollView, StatusBar, Text, useColorScheme, View } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { RootStackParamList, RouterName } from "../RouterName";
 import ICON_BASE64 from "./ICON_BASE64";
 
-const Image_1 = () => {
+type ImageProps = {
+    navigation: NativeStackNavigationProp<RootStackParamList, RouterName.Image>
+    route: RouteProp<RootStackParamList, RouterName.Image>
+}
+
+const Image_1: FC<ImageProps> = ({ route }) => {
+
+    console.log('接收参数' + route.params.userId);
+
     const isDarkMode = useColorScheme() === 'dark';
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

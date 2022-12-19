@@ -2,17 +2,16 @@ import React, { FC } from 'react'
 import { StyleSheet, ScrollView, View, Button } from 'react-native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import type { RouteProp } from '@react-navigation/native'
-import { Views, RootStackParamList } from '../../types'
+import { RootStackParamList, RouterName } from '../../../RouterName'
 
 type MainProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, Views.Main>
-  route: RouteProp<RootStackParamList, Views.Main>
+  navigation: NativeStackNavigationProp<RootStackParamList, RouterName.Main>
+  route: RouteProp<RootStackParamList, RouterName.Main>
 }
 
 const Main: FC<MainProps> = ({ navigation }) => {
-  const handleFoo = () => navigation.navigate(Views.Foo)
-
-  const handleBar = () => navigation.navigate(Views.Bar, { userId: '123' })
+  const handleFoo = () => navigation.navigate(RouterName.Foo)
+  const handleBar = () => navigation.navigate(RouterName.Bar, { userId: '123' })
 
   return (
     <ScrollView>

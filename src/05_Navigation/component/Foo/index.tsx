@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import type { RouteProp } from '@react-navigation/native'
-import { Views, RootStackParamList } from '../../types'
+import { RootStackParamList, RouterName } from '../../../RouterName'
 
 type FooProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, Views.Foo>
-  route: RouteProp<RootStackParamList, Views.Foo>
+  navigation: NativeStackNavigationProp<RootStackParamList, RouterName.Foo>
+  route: RouteProp<RootStackParamList, RouterName.Foo>
 }
 
 const Foo: FC<FooProps> = () => {
